@@ -35,7 +35,7 @@ export default function Login({ navigation }: any) {
         </TouchableOpacity>
 
         <Text style={styles.register}>
-          ¿No tienes cuenta? <Text style={{ fontWeight: "bold" }}>Crear cuenta</Text>
+          ¿No tienes cuenta?{" "} <Text style={{ fontWeight: "bold" }} onPress={() => navigation.navigate("Registro")}>Crear cuenta</Text>
         </Text>
 
       </View>

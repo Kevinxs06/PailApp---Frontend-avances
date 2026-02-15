@@ -18,7 +18,7 @@ export default function Inicio({ navigation }: any) {
                 <Text style={styles.btnTexto}>Iniciar sesión</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={() => navigation.navigate("Registro")}  style={styles.button}>
                 <Text style={styles.btnTexto}>Registrarse</Text>
             </TouchableOpacity>
         </View>
