@@ -21,6 +21,14 @@ export default function Inicio({ navigation }: any) {
             <TouchableOpacity onPress={() => navigation.navigate("Registro")}  style={styles.button}>
                 <Text style={styles.btnTexto}>Registrarse</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate("Chatbot")}  style={styles.button}>
+                <Text style={styles.btnTexto}>Chatbot</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate("ChatbotVoz")}  style={styles.button}>
+                <Text style={styles.btnTexto}>Voz</Text>
+            </TouchableOpacity>
         </View>
     );
 }
