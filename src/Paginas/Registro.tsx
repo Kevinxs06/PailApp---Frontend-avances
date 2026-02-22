@@ -1,90 +1,25 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import Input from "../Componentes/Input";
-import Boton from "../Componentes/Boton";
+import { View, StyleSheet } from "react-native";
+import Header from "../Componentes/Header";
+import Formu_Registro from "../Componentes/Formu_Registro";
 
 export default function Registro({ navigation }: any) {
-    return (
-        <View style={styles.container}>
+  return (
+    <View style={styles.container}>
+      
+      <Header title="Crear cuenta" onBack={() => navigation.goBack()} />
 
-            {/* Header */}
-            <View style={styles.header}>
-                <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={styles.botonAtras}
-                >
-                    <Text style={styles.atras}>←</Text>
-                </TouchableOpacity>
+      <Formu_Registro
+        onLoginPress={() => navigation.navigate("Login")}
+      />
 
-                <Text style={styles.title}>Crear cuenta</Text>
-            </View>
-
-            {/* Contenido */}
-            <View style={styles.content}>
-                <View style={styles.card}>
-                    <Input label="Nombre de usuario"/>
-                    <Input label="Correo electrónico"/>
-                    <Input label="Contraseña"/>
-
-                    <Boton title="Registrarse" />
-            </View>
-
-            <TouchableOpacity style={styles.gugulBoton}>
-                <Text style={styles.gugulTexto}>Continuar con Google</Text>
-            </TouchableOpacity>
-            
-            </View>
-
-        </View>
-    );
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#EDE4C7"
-    },
-    header: {
-        backgroundColor: "#FFD600",
-        paddingTop: 50,
-        paddingBottom: 20,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    botonAtras: {
-        position: "absolute",
-        left: 20,
-        top: 50,
-    },
-    atras: {
-        fontSize: 22,
-        fontWeight: "bold",
-    },
-    title: {
-        fontSize: 22,
-        fontWeight: "bold",
-    },
-    content: {
-        flex: 1,
-        alignItems: "center",
-        paddingTop: 40,
-    },
-    card: {
-        backgroundColor: "#FFD600",
-        width: "80%",
-        padding: 20,
-        borderRadius: 12,
-    },
-    gugulBoton: {
-        width: "80%",
-        borderWidth: 1,
-        borderColor: "#000",
-        paddingVertical: 12,
-        borderRadius: 6,
-        alignItems: "center",
-        marginTop: 25,
-    },
-    gugulTexto: {
-        fontSize: 15,
-    },
-})
+  container: {
+    flex: 1,
+    backgroundColor: "#EDE4C7",
+  },
+});

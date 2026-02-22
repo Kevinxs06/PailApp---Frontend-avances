@@ -1,12 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-
-
 export default function Inicio({ navigation }: any) {
     return (
-
-    // Contenido Inicio 
 
         <View style={styles.container}>
             <Text style={styles.titulo}>¡Bienvenido a PailApp!</Text>

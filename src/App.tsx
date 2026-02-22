@@ -7,7 +7,7 @@ import Inicio from './Paginas/Inicio'
 import Login from './Paginas/Login'
 import Registro from './Paginas/Registro';
 import ChatbotPrincipal from './Paginas/ChatbotPrincipal';
-import ChatVoz from './Paginas/ChatbotVoz';
+import ChatVoz from './Paginas/Chatbot_Voz';
 
 const Stack = createNativeStackNavigator();
 

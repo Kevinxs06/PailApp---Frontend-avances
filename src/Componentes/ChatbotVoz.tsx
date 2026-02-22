@@ -1,19 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import Navbar from "../Componentes/Navbar";
 
 export default function ChatVoz({ navigation }: any) {
   return (
     <View style={styles.container}>
-
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.logo}>PailApp</Text>
-        <Image
-          source={require("../Img/icono-campana.png")}
-          style={{ width: 50, height: 34 }}
-        />
-      </View>
 
       <View style={styles.statusBar}>
         <Text style={{ color: "#fff" }}>Escuchando...</Text>
@@ -34,15 +24,13 @@ export default function ChatVoz({ navigation }: any) {
         />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Chatbot")}  style={styles.button}>
+        <TouchableOpacity>
             <Image
           source={require("../Img/icono-teclado.png")}
           style={{ width: 80, height: 80, margin: 30 }}
         />
             </TouchableOpacity>
       </View>
-
-      <Navbar navigation={navigation} />
 
     </View>
   );
