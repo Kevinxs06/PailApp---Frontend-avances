@@ -5,16 +5,17 @@ import Boton from "./Boton";
 
 interface Props {
   onRegisterPress: () => void;
+  onChatBot: () => void;
 }
 
-export default function Formu_Inicio({ onRegisterPress }: Props) {
+export default function Formu_Inicio({ onRegisterPress, onChatBot }: Props) {
   return (
     <View style={styles.content}>
 
       <View style={styles.card}>
         <Input label="Correo electrónico" />
         <Input label="Contraseña" secureTextEntry />
-        <Boton title="Entrar" />
+        <Boton onPress={onChatBot} title="Entrar" />
       </View>
 
       <TouchableOpacity style={styles.googleBtn}>

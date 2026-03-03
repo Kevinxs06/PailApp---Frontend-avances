@@ -5,7 +5,7 @@ export default function Navbar({ navigation }: any) {
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity onPress={() => navigation.navigate("ChatbotPrincipal")}>
+      <TouchableOpacity onPress={() => navigation.navigate("ChatbotVoz")}>
         <Image
           source={require("../Img/icono-robot.png")}
           style={styles.icon}
@@ -19,7 +19,7 @@ export default function Navbar({ navigation }: any) {
         />
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Foro")}>
         <Image
           source={require("../Img/icono-comida.png")}
           style={styles.icon}

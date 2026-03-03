@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-export default function ChatPrincipal({ navigation }: any) {
+export default function ChatbotPrincipal() {
+  
+  const navigation = useNavigation<any>()
+  const [mensaje, setMensaje] = useState("");
+
+  const enviarMensaje = () => {
+    if (mensaje.trim() === "") return;
+
+    navigation.navigate("Chatbot_Conversacion", {
+      mensajeInicial: mensaje,
+    })
+
+    setMensaje("");
+  }
+  
   return (
     <View style={styles.container}>
 
@@ -20,14 +35,14 @@ export default function ChatPrincipal({ navigation }: any) {
 
       {/* Barra de input */}
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} />
+        <TextInput style={styles.input} placeholder="Escribe tu mensaje..." value={mensaje} onChangeText={setMensaje}/>
         <TouchableOpacity>
           <Image
           source={require("../Img/icono-micro.png")}
           style={{ width: 36, height: 36, marginLeft: 5, marginRight: 5 }}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={enviarMensaje}>
           <Image
           source={require("../Img/icono-enviado.png")}
           style={{ width: 36, height: 36 }}

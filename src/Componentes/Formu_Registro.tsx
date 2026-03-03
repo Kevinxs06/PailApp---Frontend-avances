@@ -27,10 +27,7 @@ export default function Formu_Registro({ onLoginPress }: Props) {
 
       <Text style={styles.loginText}>
         ¿Ya tienes cuenta?{" "}
-        <Text 
-          style={{ fontWeight: "bold" }} 
-          onPress={onLoginPress}
-        >
+        <Text style={{ fontWeight: "bold" }} onPress={onLoginPress}>
           Inicia sesión
         </Text>
       </Text>

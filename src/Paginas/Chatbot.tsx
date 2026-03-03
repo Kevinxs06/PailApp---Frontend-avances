@@ -2,14 +2,14 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Header from "../Componentes/Header";
 import Navbar from "../Componentes/Navbar";
-import ChatBotView from "../Componentes/ChatbotView"
+import ChatBotPrincipal from "../Componentes/ChatbotPrincipal"
 
 export default function ChatbotPrincipal({ navigation }: any) {
   return(
     <View style={styles.container}>
       <Header title="PailApp" onBack={() => navigation.goBack()} />
 
-        <ChatBotView/>
+        <ChatBotPrincipal/>
         <Navbar navigation={navigation} />
 
 

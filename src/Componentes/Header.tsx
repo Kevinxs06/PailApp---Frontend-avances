@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 interface Props {
   title: string;
@@ -16,6 +16,7 @@ export default function Header({ title, onBack }: Props) {
       )}
 
       <Text style={styles.title}>{title}</Text>
+
     </View>
   );
 }
@@ -40,5 +41,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "bold",
+  },
+  icon: {
+    width: 50,
+    height: 50,
   },
 });
