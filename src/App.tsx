@@ -12,7 +12,7 @@ import ChatVoz from './Paginas/Chatbot_Voz';
 import Chatbot_Conversacion from './Paginas/Chatbot_Conversacion';
 import Foro from './Paginas/Foro';
 import SubirReceta from './Paginas/SubirReceta';
-import DetallePublicacion from './Paginas/DetallesPublicacion';
+import DetallePublicacion from './Paginas/Publicaciones';
 
 const Stack = createNativeStackNavigator();
 

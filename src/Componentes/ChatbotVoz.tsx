@@ -1,7 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-export default function ChatVoz({ navigation }: any) {
+export default function ChatVoz() {
+
+  const navigation = useNavigation<any>();
+
   return (
     <View style={styles.container}>
 
@@ -24,7 +28,7 @@ export default function ChatVoz({ navigation }: any) {
         />
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Chatbot")} >
             <Image
           source={require("../Img/icono-teclado.png")}
           style={{ width: 80, height: 80, margin: 30 }}

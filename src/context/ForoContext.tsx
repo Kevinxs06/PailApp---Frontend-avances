@@ -12,6 +12,7 @@ export interface Comentario {
   texto: string;
   fecha: Date;
   likes: number;
+  likedByUser: boolean;
   respuestas: Comentario[];
 }
 
@@ -26,6 +27,7 @@ export interface Publicacion {
   fecha: Date;
   likes: number;
   comentarios: number;
+  likedByUserr: boolean;
   listaComentarios: Comentario[];
   guardado: boolean;
 }
@@ -39,7 +41,9 @@ interface ForoContextProps {
     >
   ) => void;
   toggleGuardar: (id: number) => void;
-  agregarComentario: (id: number, texto: string) => void; 
+  agregarComentario: (id: number, texto: string, parentId?: string) => void; 
+  toggleLikePublicacion: (id:number) => void;
+  toggleLikeComentario: (id:number, comentarioId: string) => void;
 }
 
 const ForoContext = createContext<ForoContextProps | undefined>(undefined);
@@ -52,6 +56,7 @@ export const ForoProvider = ({ children }: any) => {
       id: Date.now(),
       fecha: new Date(),
       likes: 0,
+      likedByUserr: false,
       comentarios: 0,
       listaComentarios: [], 
       guardado: false,
@@ -69,6 +74,60 @@ export const ForoProvider = ({ children }: any) => {
     );
   };
 
+const toggleLikePublicacion = (id: number) => {
+  setPublicaciones((prev) =>
+    prev.map((p) => {
+      if (p.id !== id) return p;
+
+      const yaDioLike = p.likedByUserr;
+
+      return {
+        ...p,
+        likedByUserr: !yaDioLike,
+        likes: yaDioLike ? p.likes - 1 : p.likes + 1,
+      };
+    })
+  );
+};
+
+const toggleLikeComentario = (
+  publicacionId: number,
+  comentarioId: string
+) => {
+  setPublicaciones((prev) =>
+    prev.map((pub) => {
+      if (pub.id !== publicacionId) return pub;
+
+      const actualizarLikes = (
+        comentarios: Comentario[]
+      ): Comentario[] =>
+        comentarios.map((c) => {
+          if (c.id === comentarioId) {
+            const yaDioLike = c.likedByUser;
+
+            return {
+              ...c,
+              likedByUser: !yaDioLike,
+              likes: yaDioLike ? c.likes - 1 : c.likes + 1,
+            };
+          }
+
+          return {
+            ...c,
+            respuestas: actualizarLikes(c.respuestas),
+          };
+        });
+
+      return {
+        ...pub,
+        listaComentarios: actualizarLikes(pub.listaComentarios),
+      };
+    })
+  );
+};
+
+
+
 const agregarComentario = (
   publicacionId: number,
   texto: string,
@@ -76,8 +135,8 @@ const agregarComentario = (
 ) => {
   const usuarioMock: Usuario = {
     id: "1",
-    nombre: "Kevin Páez",
-    foto: "https://i.pravatar.cc/150?img=3",
+    nombre: "usuario",
+    foto: "https://static.wikia.nocookie.net/fallout/images/e/e4/Dogmeat.jpg/revision/latest/scale-to-width-down/250?cb=20110216164620&path-prefix=es",
   };
 
   setPublicaciones((prev) =>
@@ -90,6 +149,7 @@ const agregarComentario = (
         texto,
         fecha: new Date(),
         likes: 0,
+        likedByUser: false,
         respuestas: [],
       };
 
@@ -126,7 +186,7 @@ const agregarComentario = (
 
   return (
     <ForoContext.Provider
-      value={{ publicaciones, agregarPublicacion, toggleGuardar, agregarComentario, }}
+      value={{ publicaciones, agregarPublicacion, toggleGuardar, agregarComentario, toggleLikePublicacion, toggleLikeComentario }}
     >
       {children}
     </ForoContext.Provider>

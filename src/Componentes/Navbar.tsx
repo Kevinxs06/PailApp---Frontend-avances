@@ -12,7 +12,7 @@ export default function Navbar({ navigation }: any) {
         />
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Chatbot_Conversacion")}>
         <Image
           source={require("../Img/icono-chat.png")}
           style={styles.icon}

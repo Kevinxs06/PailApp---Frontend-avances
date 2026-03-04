@@ -18,6 +18,8 @@ const handleGuardar = () => {
   }
 };
 
+const { toggleLikePublicacion } = useForo();
+
   return (
     <TouchableOpacity
     activeOpacity={0.9}
@@ -54,7 +56,17 @@ const handleGuardar = () => {
 
       <View style={styles.actions}>
         <View style={styles.leftActions}>
-          <Text style={styles.iconText}>❤️ {publicacion.likes}</Text>
+          <TouchableOpacity
+  onPress={() => toggleLikePublicacion(publicacion.id)}
+>
+  <Icon
+    name={publicacion.likedByUser ? "heart" : "heart-outline"}
+    size={22}
+    color={publicacion.likedByUser ? "red" : "black"}
+  />
+</TouchableOpacity>
+
+<Text>{publicacion.likes}</Text>
           <Text style={[styles.iconText, { marginLeft: 15 }]}>
             💬 {publicacion.comentarios}
           </Text>

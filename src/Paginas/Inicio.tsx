@@ -22,8 +22,6 @@ export default function Inicio({ navigation }: any) {
     );
 }
 
-    // Estilos
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

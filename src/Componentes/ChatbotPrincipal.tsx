@@ -20,7 +20,6 @@ export default function ChatbotPrincipal() {
   return (
     <View style={styles.container}>
 
-      {/* Contenido */}
       <View style={styles.content}>
         <Text style={styles.question}>
           ¿Qué quieres cocinar hoy?
@@ -33,7 +32,6 @@ export default function ChatbotPrincipal() {
         />
       </View>
 
-      {/* Barra de input */}
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} placeholder="Escribe tu mensaje..." value={mensaje} onChangeText={setMensaje}/>
         <TouchableOpacity>

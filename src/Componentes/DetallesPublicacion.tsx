@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View,Text,StyleSheet,ScrollView,TextInput,TouchableOpacity,KeyboardAvoidingView,Platform, } from "react-native";
-import Header from "../Componentes/Header";
 import { useForo } from "../context/ForoContext";
+import ComentarioItem from "./ComentarioItem";
 
-export default function DetallePublicacion({ route, navigation }: any) {
+export default function DetallesPublicacion({ route }: any) {
   const { publicacion } = route.params;
   const { publicaciones, agregarComentario } = useForo();
 
@@ -28,10 +28,6 @@ export default function DetallePublicacion({ route, navigation }: any) {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <View style={styles.container}>
-        <Header
-          title="Detalle"
-          onBack={() => navigation.goBack()}
-        />
 
         <ScrollView contentContainerStyle={{ padding: 20 }}>
           <Text style={styles.titulo}>
@@ -49,7 +45,7 @@ export default function DetallePublicacion({ route, navigation }: any) {
           <View style={styles.divider} />
 
           <Text style={styles.subtitulo}>
-            Comentarios ({publicacionActual?.comentarios})
+            Comentarios ({comentarios.length})
           </Text>
 
           {comentarios.length === 0 ? (
@@ -57,10 +53,12 @@ export default function DetallePublicacion({ route, navigation }: any) {
               Aún no hay comentarios.
             </Text>
           ) : (
-            comentarios.map((c, index) => (
-              <View key={index} style={styles.comentario}>
-                <Text>{c}</Text>
-              </View>
+            comentarios.map((c) => (
+            <ComentarioItem
+            key={c.id}
+            comentario={c}
+            publicacionId={publicacionActual!.id}
+            />
             ))
           )}
         </ScrollView>
@@ -77,7 +75,7 @@ export default function DetallePublicacion({ route, navigation }: any) {
             style={styles.boton}
             onPress={enviarComentario}
           >
-            <Text style={{ color: "white" }}>Enviar</Text>
+            <Text style={{ color: "black", fontWeight: "bold" }}>Enviar</Text>
           </TouchableOpacity>
         </View>
       </View>

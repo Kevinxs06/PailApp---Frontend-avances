@@ -13,7 +13,7 @@ export default function ComentarioItem({
   comentario,
   publicacionId,
 }: Props) {
-  const { agregarComentario } = useForo();
+  const { agregarComentario, toggleLikeComentario } = useForo();
   const [mostrarInput, setMostrarInput] = useState(false);
   const [respuesta, setRespuesta] = useState("");
 
@@ -39,16 +39,26 @@ export default function ComentarioItem({
               {comentario.usuario.nombre}
             </Text>
             <Text style={styles.fecha}>
-              {comentario.fecha.toLocaleString()}
+              {new Date(comentario.fecha).toLocaleString()}
             </Text>
           </View>
 
           <Text style={styles.texto}>{comentario.texto}</Text>
 
           <View style={styles.actions}>
-            <TouchableOpacity>
-              <Icon name="heart-outline" size={18} />
+            <TouchableOpacity
+            onPress={() =>
+              toggleLikeComentario(publicacionId, comentario.id)
+            }
+            >
+              <Icon
+                name={comentario.likedByUser ? "heart" : "heart-outline"}
+                size={18}
+                color={comentario.likedByUser ? "red" : "black"}
+                />
             </TouchableOpacity>
+            
+            <Text>{comentario.likes}</Text>
 
             <TouchableOpacity
               onPress={() => setMostrarInput(!mostrarInput)}
@@ -66,7 +76,7 @@ export default function ComentarioItem({
                 style={styles.input}
               />
               <TouchableOpacity onPress={enviarRespuesta}>
-                <Text style={{ fontWeight: "bold" }}>
+                <Text style={styles.botoncitop}>
                   Enviar
                 </Text>
               </TouchableOpacity>
@@ -105,4 +115,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
   },
+  botoncitop: {
+    fontWeight: "bold",
+    margin: 6,
+    backgroundColor: "#FFD600",
+    padding: 6,
+    borderRadius: 12,
+
+  }
 });
