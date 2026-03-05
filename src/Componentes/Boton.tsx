@@ -1,5 +1,6 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
+import { styles } from "../Estilos/Boton.estilo";
 
 interface Props {
     title: string;
@@ -13,20 +14,3 @@ export default function Boton({ title,onPress }: Props) {
         </TouchableOpacity>
     );
 }
-
-const styles = StyleSheet.create({
-    button: {
-        backgroundColor: "#000",
-        paddingVertical: 8,
-        borderRadius: 6,
-        alignItems: "center",
-        marginTop: 10,
-        width: 100,
-        alignSelf: "center",
-    },
-    text: {
-        color: "#fff",
-        fontSize: 16,
-        fontWeight: "bold",
-    },
-});

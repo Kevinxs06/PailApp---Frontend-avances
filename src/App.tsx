@@ -13,6 +13,7 @@ import Chatbot_Conversacion from './Paginas/Chatbot_Conversacion';
 import Foro from './Paginas/Foro';
 import SubirReceta from './Paginas/SubirReceta';
 import DetallePublicacion from './Paginas/Publicaciones';
+import MisPlatoss from './Paginas/MisPlatoss'
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,8 @@ export default function App() {
         <Stack.Screen name="Foro" component={Foro} />
         <Stack.Screen name="SubirReceta" component={SubirReceta} />
         <Stack.Screen name="DetallePublicacion" component={DetallePublicacion} options={{ headerShown: false}} />
+        <Stack.Screen name="MisPlatos" component={MisPlatoss} options={{ headerShown: false }}
+/>
       </Stack.Navigator>
     </NavigationContainer>
 </ForoProvider>

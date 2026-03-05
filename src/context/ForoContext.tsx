@@ -12,7 +12,6 @@ export interface Comentario {
   texto: string;
   fecha: Date;
   likes: number;
-  likedByUser: boolean;
   respuestas: Comentario[];
 }
 
@@ -37,13 +36,12 @@ interface ForoContextProps {
   agregarPublicacion: (
     data: Omit<
       Publicacion,
-      "id" | "fecha" | "likes" | "comentarios" | "guardado" | "listaComentarios"
+      "id" | "fecha" | "likes" | "comentarios" | "guardado" | "listaComentarios" | "likedByUserr"
     >
   ) => void;
   toggleGuardar: (id: number) => void;
   agregarComentario: (id: number, texto: string, parentId?: string) => void; 
   toggleLikePublicacion: (id:number) => void;
-  toggleLikeComentario: (id:number, comentarioId: string) => void;
 }
 
 const ForoContext = createContext<ForoContextProps | undefined>(undefined);
@@ -90,44 +88,6 @@ const toggleLikePublicacion = (id: number) => {
   );
 };
 
-const toggleLikeComentario = (
-  publicacionId: number,
-  comentarioId: string
-) => {
-  setPublicaciones((prev) =>
-    prev.map((pub) => {
-      if (pub.id !== publicacionId) return pub;
-
-      const actualizarLikes = (
-        comentarios: Comentario[]
-      ): Comentario[] =>
-        comentarios.map((c) => {
-          if (c.id === comentarioId) {
-            const yaDioLike = c.likedByUser;
-
-            return {
-              ...c,
-              likedByUser: !yaDioLike,
-              likes: yaDioLike ? c.likes - 1 : c.likes + 1,
-            };
-          }
-
-          return {
-            ...c,
-            respuestas: actualizarLikes(c.respuestas),
-          };
-        });
-
-      return {
-        ...pub,
-        listaComentarios: actualizarLikes(pub.listaComentarios),
-      };
-    })
-  );
-};
-
-
-
 const agregarComentario = (
   publicacionId: number,
   texto: string,
@@ -149,7 +109,6 @@ const agregarComentario = (
         texto,
         fecha: new Date(),
         likes: 0,
-        likedByUser: false,
         respuestas: [],
       };
 
@@ -186,7 +145,7 @@ const agregarComentario = (
 
   return (
     <ForoContext.Provider
-      value={{ publicaciones, agregarPublicacion, toggleGuardar, agregarComentario, toggleLikePublicacion, toggleLikeComentario }}
+      value={{ publicaciones, agregarPublicacion, toggleGuardar, agregarComentario, toggleLikePublicacion }}
     >
       {children}
     </ForoContext.Provider>

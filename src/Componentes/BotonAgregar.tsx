@@ -1,5 +1,6 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
+import { styles } from "../Estilos/BotonAgregar.estilo";
 
 export default function BotonAgregar({ onPress }: any) {
   return (
@@ -8,17 +9,3 @@ export default function BotonAgregar({ onPress }: any) {
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  boton: {
-    position: "absolute",
-    bottom: 0,
-    width: "100%",
-    backgroundColor: "#FFD600",
-    alignItems: "center",
-    padding: 10,
-  },
-  texto: {
-    fontSize: 40,
-  },
-});

@@ -5,21 +5,21 @@ export default function Navbar({ navigation }: any) {
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity onPress={() => navigation.navigate("ChatbotVoz")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Chatbot")}>
         <Image
           source={require("../Img/icono-robot.png")}
           style={styles.icon}
         />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Chatbot_Conversacion")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Foro")}>
         <Image
           source={require("../Img/icono-chat.png")}
           style={styles.icon}
         />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Foro")}>
+      <TouchableOpacity onPress={() => navigation.navigate("MisPlatos")}>
         <Image
           source={require("../Img/icono-comida.png")}
           style={styles.icon}

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View,Text,StyleSheet,Image,TouchableOpacity,TextInput, } from "react-native";
+import { View,Text,Image,TouchableOpacity,TextInput, } from "react-native";
 import { Comentario } from "../context/ForoContext";
 import { useForo } from "../context/ForoContext";
-import Icon from "react-native-vector-icons/Ionicons";
+import { styles } from "../Estilos/ComentarioItem";
 
 interface Props {
   comentario: Comentario;
@@ -13,7 +13,7 @@ export default function ComentarioItem({
   comentario,
   publicacionId,
 }: Props) {
-  const { agregarComentario, toggleLikeComentario } = useForo();
+  const { agregarComentario } = useForo();
   const [mostrarInput, setMostrarInput] = useState(false);
   const [respuesta, setRespuesta] = useState("");
 
@@ -46,19 +46,7 @@ export default function ComentarioItem({
           <Text style={styles.texto}>{comentario.texto}</Text>
 
           <View style={styles.actions}>
-            <TouchableOpacity
-            onPress={() =>
-              toggleLikeComentario(publicacionId, comentario.id)
-            }
-            >
-              <Icon
-                name={comentario.likedByUser ? "heart" : "heart-outline"}
-                size={18}
-                color={comentario.likedByUser ? "red" : "black"}
-                />
-            </TouchableOpacity>
-            
-            <Text>{comentario.likes}</Text>
+        
 
             <TouchableOpacity
               onPress={() => setMostrarInput(!mostrarInput)}
@@ -97,30 +85,3 @@ export default function ComentarioItem({
   );
 }
 
-const styles = StyleSheet.create({
-  container: { marginBottom: 15 },
-  row: { flexDirection: "row" },
-  avatar: { width: 35, height: 35, borderRadius: 20, marginRight: 10 },
-  header: { flexDirection: "row", justifyContent: "space-between" },
-  nombre: { fontWeight: "bold" },
-  fecha: { fontSize: 11, color: "#777" },
-  texto: { marginVertical: 5 },
-  actions: { flexDirection: "row", gap: 15 },
-  responder: { fontSize: 12, color: "#444" },
-  respuesta: { marginLeft: 30, marginTop: 10 },
-  inputContainer: { flexDirection: "row", marginTop: 8 },
-  input: {
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-  },
-  botoncitop: {
-    fontWeight: "bold",
-    margin: 6,
-    backgroundColor: "#FFD600",
-    padding: 6,
-    borderRadius: 12,
-
-  }
-});

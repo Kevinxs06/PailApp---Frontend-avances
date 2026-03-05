@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View,Text,StyleSheet,ScrollView,TextInput,TouchableOpacity,KeyboardAvoidingView,Platform, } from "react-native";
+import { View,Text,ScrollView,TextInput,TouchableOpacity,KeyboardAvoidingView,Platform, } from "react-native";
 import { useForo } from "../context/ForoContext";
 import ComentarioItem from "./ComentarioItem";
+import { styles } from "../Estilos/DetallesPublicacion";
 
 export default function DetallesPublicacion({ route }: any) {
   const { publicacion } = route.params;
@@ -75,7 +76,7 @@ export default function DetallesPublicacion({ route }: any) {
             style={styles.boton}
             onPress={enviarComentario}
           >
-            <Text style={{ color: "black", fontWeight: "bold" }}>Enviar</Text>
+            <Text style={{ color: "white", fontWeight: "bold" }}>Enviar</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -83,76 +84,3 @@ export default function DetallesPublicacion({ route }: any) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#EDE4C7",
-  },
-
-  titulo: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-
-  descripcion: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-
-  fecha: {
-    fontSize: 12,
-    color: "#777",
-  },
-
-  divider: {
-    height: 1,
-    backgroundColor: "#ccc",
-    marginVertical: 20,
-  },
-
-  subtitulo: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-
-  comentario: {
-    backgroundColor: "#fff",
-    padding: 12,
-    borderRadius: 12,
-    marginBottom: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
-    elevation: 2,
-  },
-
-  sinComentarios: {
-    color: "#777",
-    fontStyle: "italic",
-  },
-
-  inputContainer: {
-    flexDirection: "row",
-    padding: 10,
-    borderTopWidth: 1,
-    borderColor: "#ddd",
-    backgroundColor: "#fff",
-  },
-
-  input: {
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 20,
-    paddingHorizontal: 15,
-  },
-
-  boton: {
-    backgroundColor: "#FFD600",
-    paddingHorizontal: 20,
-    justifyContent: "center",
-    borderRadius: 20,
-    marginLeft: 10,
-  },
-});

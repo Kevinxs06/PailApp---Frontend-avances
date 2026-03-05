@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text,TouchableOpacity, Image } from "react-native";
+import { styles } from "../Estilos/Header";
 
 interface Props {
   title: string;
@@ -20,30 +21,3 @@ export default function Header({ title, onBack }: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: "#FFD600",
-    paddingTop: 50,
-    paddingBottom: 20,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  backButton: {
-    position: "absolute",
-    left: 20,
-    top: 50,
-  },
-  back: {
-    fontSize: 22,
-    fontWeight: "bold",
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: "bold",
-  },
-  icon: {
-    width: 50,
-    height: 50,
-  },
-});
