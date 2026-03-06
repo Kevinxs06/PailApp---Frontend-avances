@@ -5,7 +5,7 @@ export default function Navbar({ navigation }: any) {
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Chatbot")}>
+      <TouchableOpacity onPress={() => navigation.navigate("ChatbotVoz")}>
         <Image
           source={require("../Img/icono-robot.png")}
           style={styles.icon}

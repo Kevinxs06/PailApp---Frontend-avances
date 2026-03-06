@@ -16,6 +16,8 @@ import SubirReceta from './Paginas/SubirReceta';
 import DetallePublicacion from './Paginas/Publicaciones';
 import MisPlatoss from './Paginas/MisPlatoss'
 import MisPlatosPerfil from './Paginas/MisPlatosPerfil';
+import Configuracion from './Paginas/Configuracion';
+import EditarPerfil from './Paginas/EditarPerfil';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +39,8 @@ export default function App() {
         <Stack.Screen name="DetallePublicacion" component={DetallePublicacion} options={{ headerShown: false}} />
         <Stack.Screen name="MisPlatos" component={MisPlatoss} options={{ headerShown: false }} />
         <Stack.Screen name="MisPlatosPerfil" component={MisPlatosPerfil} />
+        <Stack.Screen name="Configuracion" component={Configuracion} />
+        <Stack.Screen name="EditarPerfil" component={EditarPerfil} />
       </Stack.Navigator>
     </NavigationContainer>
 </ForoProvider>
