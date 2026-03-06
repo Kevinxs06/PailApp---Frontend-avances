@@ -9,8 +9,6 @@ export default function DetallePublicacion({ route, navigation }: any) {
   return (
 <View style={styles.container}>
 
-  {/* en el header va el nombre del usuario */}
-
       <Header title="Publicación" onBack={() => navigation.goBack()}/>
       <DetallesPublicacion navigation={navigation} route={route} />
     </View>

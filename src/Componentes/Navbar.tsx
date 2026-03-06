@@ -26,7 +26,7 @@ export default function Navbar({ navigation }: any) {
         />
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("MisPlatosPerfil")}> 
         <Image
           source={require("../Img/icono-usuario.png")}
           style={styles.icon}

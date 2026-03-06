@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ForoProvider } from './context/ForoContext';
+import { RecetasProvider } from "./context/RecetasContext";
 
 import Carga from './Paginas/Carga';
 import Inicio from './Paginas/Inicio'
@@ -14,11 +15,13 @@ import Foro from './Paginas/Foro';
 import SubirReceta from './Paginas/SubirReceta';
 import DetallePublicacion from './Paginas/Publicaciones';
 import MisPlatoss from './Paginas/MisPlatoss'
+import MisPlatosPerfil from './Paginas/MisPlatosPerfil';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <RecetasProvider>
     <ForoProvider>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -32,10 +35,11 @@ export default function App() {
         <Stack.Screen name="Foro" component={Foro} />
         <Stack.Screen name="SubirReceta" component={SubirReceta} />
         <Stack.Screen name="DetallePublicacion" component={DetallePublicacion} options={{ headerShown: false}} />
-        <Stack.Screen name="MisPlatos" component={MisPlatoss} options={{ headerShown: false }}
-/>
+        <Stack.Screen name="MisPlatos" component={MisPlatoss} options={{ headerShown: false }} />
+        <Stack.Screen name="MisPlatosPerfil" component={MisPlatosPerfil} />
       </Stack.Navigator>
     </NavigationContainer>
 </ForoProvider>
+</RecetasProvider>
   );
 }

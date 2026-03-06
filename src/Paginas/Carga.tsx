@@ -6,7 +6,7 @@ export default function Carga({ navigation }: any) {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.replace("Inicio");
-    }, 2000); // 2 segundos
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
